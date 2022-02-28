@@ -43,21 +43,21 @@ end
 %     kp = kps(i);
 %     kp_data = kps_collected(i);
 %     
-%     sim("part2controller.slx")
-%     output = ans.yout.getElement('output');
-%     control_sig = ans.yout.getElement('control');
-%     input = ans.yout.getElement('input');
-% 
-%     figure
-%     subplot(2,1,1);
-%     hold on
-%     title('Experimental, Simulated Output, and Control for kp=',num2str(kp))
-%     plot(output.Values.Time, output.Values.Data, 'LineStyle','--', 'Color', 'r');
-%     plot(kp_data.t, kp_data.x, 'Color', 'b');
-%     ylabel('Position [mm]')
-%     grid on
-%     legend('Simulated', 'Experimental')
-%     hold off
+    sim("part2controller.slx")
+    output = ans.yout.getElement('output');
+    control_sig = ans.yout.getElement('control');
+    input = ans.yout.getElement('input');
+
+    figure
+    subplot(2,1,1);
+    hold on
+    title('Experimental, Simulated Output, and Control for kp=',num2str(kp))
+    plot(output.Values.Time, output.Values.Data, 'LineStyle','--', 'Color', 'r');
+    plot(kp_data.t, kp_data.x, 'Color', 'b');
+    ylabel('Position [mm]')
+    grid on
+    legend('Simulated', 'Experimental')
+    hold off
 % 
 % 
 %     subplot(2,1,2)
