@@ -10,7 +10,8 @@ k = 0.0351;
 a1 = (m1 * b2 + m2 * b1 + (m1 + m2) * c) / (m1 * m2);
 a2 = (b1 * b2 + (b1 + b2) * c + (m1 + m2) * k) / (m1 * m2);
 a3 = (b1 + b2) * k / (m1 * m2);
-
+d1 = 0.5934;
+d2 = 0.05934;
 num = [c / (m1 * m2), k / (m1 * m2)];
 den = [1 a1 a2 a3 0];
 
@@ -28,8 +29,9 @@ lead_filter_phi_max = desired_phase / 2
 kp_notch = 1/amp
 
 % open("Lab4/flex2.slx")
-% set_param('flex2', 'SimulationCommand', 'start')
-model = sim('flex2.slx');
+% set_param('flex2', 'SimulationCommand', 'connect')
+% set_param('flex2', 'Simulation', 'start')
+model = sim('flex2', 'SimulationMode', 'normal');
 x1_sim = model.yout.getElement('x1_sim');
 x2_sim = model.yout.getElement('x2_sim');
 t_sim = t;
