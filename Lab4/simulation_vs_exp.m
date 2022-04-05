@@ -1,5 +1,8 @@
-clear;clc;
+clear; clc;
+
 load('Lab4/Lab 4 360 Data/trajectory_data.mat');
+exp_data = load('Lab4/Lab 4 360 Data/double_lag_notch.mat');
+
 c = 0;
 m1 = 2.6634E-4; m2 = 1.4383E-4;
 b1 = 0.0085; b2 = 8.4745E-4;
@@ -24,28 +27,19 @@ desired_phase = -180 + 30 + 10 - (phase);
 lead_filter_phi_max = desired_phase / 2
 kp_notch = 1/amp
 
-% set_param('double_lead_notch', 'SimulationCommand', 'start')
-set_param('double_lead_notch','SimulationMode','start')
-ans = sim("double_lead_notch.slx")
-x1 = ans.yout.getElement('x1_data');
-x2 = ans.yout.getElement('x2_data');
-% control = ans.yout.getElement('u');
+% open("Lab4/flex2.slx")
+% set_param('flex2', 'SimulationCommand', 'start')
+model = sim('flex2.slx');
+x1_sim = model.yout.getElement('x1_sim');
+x2_sim = model.yout.getElement('x2_sim');
+t_sim = t;
+
+
+% x1_exp = exp_data.x1;
+% x2_exp = exp_data.x2;
+% t_exp = exp_data.t;
 % 
 % figure
-% hold on
-% plot(x1_data.)
-
-
-a = 8.8741;
-b = 70.4295;
-Glead = tf([1 a], [1 b]);
-[amp, phase] = bode(G2 * Gnotch * Glead * Glead, 25)
-kp_leads = 1/amp
-c = 4.2;
-d = 0.01 * c;
-Glag = tf([1 c], [1 d]);
-[amp, phase] = bode(G2 * Gnotch * Glead * Glead * Glag, 25)
-kp_full = 1/amp
-
-
-kp = 1/(Gnoth)
+% hold on 
+% plot(x1_sim, t_sim, 'Color', 'b')
+% plot(x1_exp, t_exp)

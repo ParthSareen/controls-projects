@@ -1,5 +1,4 @@
-clear;clc;
-load('Lab4/Lab 4 360 Data/trajectory_data.mat');
+load('Lab4/Lab 4 360 Data/);
 c = 0;
 m1 = 2.6634E-4; m2 = 1.4383E-4;
 b1 = 0.0085; b2 = 8.4745E-4;
