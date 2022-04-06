@@ -25,10 +25,10 @@ lead_filter_phi_max = desired_phase / 2
 kp_notch = 1/amp
 
 % set_param('double_lead_notch', 'SimulationCommand', 'start')
-set_param('double_lead_notch','SimulationMode','start')
-ans = sim("double_lead_notch.slx")
-x1 = ans.yout.getElement('x1_data');
-x2 = ans.yout.getElement('x2_data');
+% set_param('double_lead_notch','SimulationMode','start')
+% ans = sim("double_lead_notch.slx")
+% x1 = ans.yout.getElement('x1_data');
+% x2 = ans.yout.getElement('x2_data');
 % control = ans.yout.getElement('u');
 % 
 % figure
@@ -48,4 +48,4 @@ Glag = tf([1 c], [1 d]);
 kp_full = 1/amp
 
 
-kp = 1/(Gnoth)
+kp = 1/(Gnotch)
